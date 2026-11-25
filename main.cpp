@@ -2,13 +2,13 @@
 #include <SDL3/SDL_main.h>
 
 int main(int argc, char* argv[]) {
-    // --- Init ---
+    // Init
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("SDL_Init failed: %s", SDL_GetError());
         return 1;
     }
 
-    // --- Create window ---
+    // Create window
     SDL_Window* window = SDL_CreateWindow("SDL3 Window", 800, 600, SDL_WINDOW_RESIZABLE);
     if (!window) {
         SDL_Log("SDL_CreateWindow failed: %s", SDL_GetError());
@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // --- Create renderer ---
+    // Create renderer
     SDL_Renderer* renderer = SDL_CreateRenderer(window, nullptr);
     if (!renderer) {
         SDL_Log("SDL_CreateRenderer failed: %s", SDL_GetError());
@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // --- Main loop ---
+    // Main loop
     bool running = true;
     SDL_Event event;
 
@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
         SDL_Delay(16); // ~60 FPS
     }
 
-    // --- Cleanup ---
+    // Cleanup
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
